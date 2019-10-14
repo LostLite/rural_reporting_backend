@@ -1,0 +1,19 @@
+language: node_js
+node_js: 
+  - stable
+
+install:
+  - npm install
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database socialnetwork;' -U postgres
+  - psql -c 'CREATE USER "ke-william" WITH PASSWORD null;' -U postgres
+  - npm install -g sequelize-cli
+
+script: true
+
+notifications:
+  email: false
